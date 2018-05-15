@@ -2,7 +2,9 @@ package com.mvp.ultimate.model;
 
 import com.mvp.ultimate.http.HttpHelper;
 import com.mvp.ultimate.http.response.GankHttpResponse;
+import com.mvp.ultimate.http.response.GoldHttpResponse;
 import com.mvp.ultimate.model.bean.GankItemBean;
+import com.mvp.ultimate.model.bean.GoldListBean;
 
 import java.util.List;
 
@@ -33,5 +35,15 @@ public class DataManager implements HttpHelper {
     @Override
     public Call<GankHttpResponse<List<GankItemBean>>> fetchRandomGirl(int num) {
         return mHttpHelper.fetchRandomGirl(num);
+    }
+
+    @Override
+    public Call<GoldHttpResponse<List<GoldListBean>>> fetchGoldList(String type, int num, int page) {
+        return mHttpHelper.fetchGoldList(type, num, page);
+    }
+
+    @Override
+    public Call<GoldHttpResponse<List<GoldListBean>>> fetchGoldHotList(String type, String dataTime, int limit) {
+        return mHttpHelper.fetchGoldHotList(type, dataTime, limit);
     }
 }

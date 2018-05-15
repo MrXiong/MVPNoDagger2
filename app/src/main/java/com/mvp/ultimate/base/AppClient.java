@@ -19,9 +19,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AppClient {
     public static Retrofit retrofit = null;
     private static Context mContext;
+    private static String mBaseURL = GankApis.HOST;
 
-    public static Retrofit retrofit(Context context) {
+    public static Retrofit retrofit(Context context, String baseURL) {
         mContext = context;
+        mBaseURL = baseURL;
         if (retrofit == null) {
             RetrofitFactory factory = new RetrofitFactory();
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -65,10 +67,15 @@ public class AppClient {
             builder.writeTimeout(20, TimeUnit.SECONDS);
             //错误重连
             builder.retryOnConnectionFailure(true);
-            //以上设置结束，才能build(),不然设置白搭
+
+            retrofit = createRetrofit(provideRetrofitBuilder(), builder.build(), mBaseURL);
+
+
+          /*  //以上设置结束，才能build(),不然设置白搭
             OkHttpClient okHttpClient = builder.build();
             retrofit = new Retrofit.Builder()
                     .baseUrl(GankApis.HOST)
+                    .client(okHttpClient)
                             //增加返回值为String的支持
                     //.addConverterFactory(ScalarsConverterFactory.create())
                             //增加返回值为Gson的支持(以实体类返回)
@@ -78,9 +85,21 @@ public class AppClient {
                     //.addConverterFactory(FastJsonConverterFactory.create())
                             //增加返回值为Oservable<T>的支持
                     //.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .client(okHttpClient)
-                    .build();
+                    .build();*/
         }
         return retrofit;
+    }
+
+
+    private static Retrofit.Builder provideRetrofitBuilder() {
+        return new Retrofit.Builder();
+    }
+    private static Retrofit createRetrofit(Retrofit.Builder builder, OkHttpClient client, String url) {
+        return builder
+                .baseUrl(url)
+                .client(client)
+                //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 }

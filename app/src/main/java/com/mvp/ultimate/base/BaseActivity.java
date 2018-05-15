@@ -9,11 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mvp.ultimate.SnackbarUtil;
+import com.mvp.ultimate.http.HttpHelper;
+import com.mvp.ultimate.http.RetrofitHelper;
+import com.mvp.ultimate.http.api.GankApis;
+import com.mvp.ultimate.http.api.GoldApis;
+import com.mvp.ultimate.model.DataManager;
 
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
+import retrofit2.Retrofit;
 
 /**
  * Created by ZX on 2018/5/8.
@@ -27,9 +33,28 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     protected Context mContext;
     private Unbinder mUnBinder;
 
-    protected abstract int getLayout();
+    protected DataManager mDataManager;
+    protected HttpHelper mRetrofitHelper;
 
-    protected abstract void initInject();
+    protected abstract int getLayout();
+    //不指定接口列表的时候，默认是BaseApis
+
+
+    protected abstract T getPresenter();
+    protected String getBaseURL(){
+        return GankApis.HOST;
+    }
+
+
+    protected void initInject(){
+        Retrofit goldRetrofit = AppClient.retrofit(mContext, GoldApis.HOST);
+        Retrofit gankRetrofit = AppClient.retrofit(mContext, GankApis.HOST);
+        GoldApis goldApis = goldRetrofit.create(GoldApis.class);
+        GankApis gankApis = gankRetrofit.create(GankApis.class);
+        mRetrofitHelper = new RetrofitHelper(gankApis, goldApis);
+        mDataManager = new DataManager(mRetrofitHelper);
+        mPresenter = getPresenter();
+    }
 
     protected void onViewCreated() {
         initInject();

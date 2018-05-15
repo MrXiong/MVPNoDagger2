@@ -18,6 +18,7 @@ import com.mvp.ultimate.http.RetrofitHelper;
 import com.mvp.ultimate.http.api.GankApis;
 import com.mvp.ultimate.model.DataManager;
 import com.mvp.ultimate.model.bean.GankItemBean;
+import com.mvp.ultimate.model.bean.GoldListBean;
 import com.mvp.ultimate.presenter.GirlPresenter;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -34,29 +35,27 @@ public class GirlsActivity extends BaseActivity<GirlPresenter> implements GirlCo
     RecyclerView mRvList;
 
     private List<GankItemBean> mList = new ArrayList<>();
+    private List<GoldListBean> mGoldList = new ArrayList<>();
     private CommonAdapter mCommonAdapter;
-    private DataManager mDataManager;
-    private HttpHelper mRetrofitHelper;
 
     @Override
     protected int getLayout() {
         return R.layout.activity_girls;
     }
 
+
     @Override
-    protected void initInject() {
-        Retrofit retrofit = AppClient.retrofit(mContext);
-        GankApis gankApis = retrofit.create(GankApis.class);
-        mRetrofitHelper = new RetrofitHelper(gankApis);
-        mDataManager = new DataManager(mRetrofitHelper);
-        mPresenter = new GirlPresenter(mDataManager);
+    protected GirlPresenter getPresenter() {
+        return new GirlPresenter(mDataManager);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+        //多BaseURL的情况还要解决下
         mPresenter.getGirlData();
+        mPresenter.getGoldData();
     }
 
     private void initView() {
@@ -92,5 +91,11 @@ public class GirlsActivity extends BaseActivity<GirlPresenter> implements GirlCo
         mList.clear();
         mList.addAll(list);
         mCommonAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showGoldContent(List<GoldListBean> list) {
+        mGoldList.clear();
+        mGoldList.addAll(list);
     }
 }
