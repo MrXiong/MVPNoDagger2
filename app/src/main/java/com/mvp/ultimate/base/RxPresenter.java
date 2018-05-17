@@ -1,8 +1,5 @@
 package com.mvp.ultimate.base;
 
-/**
- * Created by ZX on 2018/5/8.
- */
 
 public class RxPresenter<T extends BaseView> implements BasePresenter<T> {
 

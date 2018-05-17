@@ -11,11 +11,6 @@ import java.util.List;
 import retrofit2.Call;
 
 
-/**
- * @author: Est <codeest.dev@gmail.com>
- * @date: 2017/4/21
- * @description:
- */
 
 public interface HttpHelper {
 

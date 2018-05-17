@@ -10,9 +10,6 @@ import java.util.List;
 
 import retrofit2.Call;
 
-/**
- * Created by ZX on 2018/5/9.
- */
 
 public class DataManager implements HttpHelper {
 

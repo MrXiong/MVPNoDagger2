@@ -7,9 +7,6 @@ import com.mvp.ultimate.model.bean.GoldListBean;
 
 import java.util.List;
 
-/**
- * Created by ZX on 2018/5/8.
- */
 
 public interface GirlContract {
     interface Model {

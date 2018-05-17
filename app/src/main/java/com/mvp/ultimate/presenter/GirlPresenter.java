@@ -22,9 +22,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by ZX on 2018/5/8.
- */
 
 public class GirlPresenter extends RxPresenter<GirlContract.View> implements GirlContract.Presenter {
     private DataManager mDataManager;

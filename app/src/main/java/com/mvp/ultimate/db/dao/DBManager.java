@@ -5,9 +5,6 @@ import com.mvp.ultimate.base.IApplication;
 import com.mvp.ultimate.db.dao.auto.DaoMaster;
 import com.mvp.ultimate.db.dao.auto.DaoSession;
 
-/**
- * Created by ZX on 2018/4/24.
- */
 
 public class DBManager {
 

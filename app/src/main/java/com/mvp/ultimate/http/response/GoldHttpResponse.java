@@ -1,8 +1,5 @@
 package com.mvp.ultimate.http.response;
 
-/**
- * Created by codeest on 16/11/27.
- */
 
 public class GoldHttpResponse<T> {
 

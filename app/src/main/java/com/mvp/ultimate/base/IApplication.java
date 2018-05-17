@@ -10,9 +10,6 @@ import com.mvp.ultimate.db.dao.DBManager;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by ZX on 2018/5/8.
- */
 
 public class IApplication extends Application {
 

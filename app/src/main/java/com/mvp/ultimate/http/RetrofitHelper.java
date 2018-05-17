@@ -14,9 +14,6 @@ import java.util.List;
 import retrofit2.Call;
 
 
-/**
- * Created by codeest on 2016/8/3.
- */
 public class RetrofitHelper implements HttpHelper {
 
     private GankApis mGankApiService;

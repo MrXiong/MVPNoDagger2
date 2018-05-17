@@ -18,9 +18,6 @@ import com.mvp.ultimate.utils.StatusBarUtil;
 
 import me.yokeyword.fragmentation.SupportActivity;
 
-/**
- * Created by ZX on 2018/5/17.
- */
 
 public class ToolbarActivity extends SupportActivity {
 

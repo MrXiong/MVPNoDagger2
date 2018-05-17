@@ -13,9 +13,6 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-/**
- * Created by ZX on 2018/5/16.
- */
 
 public class StatusBarUtil {
 

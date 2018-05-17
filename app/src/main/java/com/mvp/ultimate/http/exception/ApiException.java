@@ -1,8 +1,5 @@
 package com.mvp.ultimate.http.exception;
 
-/**
- * Created by codeest on 2016/8/4.
- */
 public class ApiException extends Exception {
 
     private int code;

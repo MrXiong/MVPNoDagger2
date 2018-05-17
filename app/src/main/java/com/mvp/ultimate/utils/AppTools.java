@@ -17,9 +17,6 @@ import java.io.IOException;
 import java.util.List;
 
 
-/**
- * Created by zx on 2016/5/10.
- */
 public class AppTools {
     private static final String TAG = AppTools.class.getSimpleName();
     public static String INTERFACE_VERSION_NEW = "2.0";

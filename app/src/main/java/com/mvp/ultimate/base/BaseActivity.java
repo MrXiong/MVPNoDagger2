@@ -22,9 +22,6 @@ import me.yokeyword.fragmentation.SupportActivity;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
-/**
- * Created by ZX on 2018/5/8.
- */
 
 public abstract class BaseActivity<T extends BasePresenter> extends ToolbarActivity implements BaseView {
 

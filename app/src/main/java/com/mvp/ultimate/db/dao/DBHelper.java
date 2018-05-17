@@ -8,9 +8,6 @@ import com.mvp.ultimate.db.dao.auto.DaoMaster;
 
 import org.greenrobot.greendao.database.Database;
 
-/**
- * Created by ZX on 2018/4/24.
- */
 
 public class DBHelper extends DaoMaster.OpenHelper {
     public static final String DBNAME = "wallet.db";

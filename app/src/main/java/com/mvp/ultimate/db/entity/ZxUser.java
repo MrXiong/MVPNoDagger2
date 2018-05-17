@@ -4,9 +4,6 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Property;
 
-/**
- * Created by ZX on 2018/4/24.
- */
 
 @Entity
 public class ZxUser {

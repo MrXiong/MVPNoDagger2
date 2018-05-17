@@ -11,9 +11,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Query;
 
-/**
- * Created by codeest on 16/11/27.
- */
 
 public interface GoldApis {
 

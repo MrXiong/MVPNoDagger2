@@ -18,9 +18,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 
-/**
- * Created by Administrator on 2017/1/19.
- */
 public class RetrofitFactory {
     public static final String METHOD = "function";
     public static final String CLIENT = "client";

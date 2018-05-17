@@ -1,8 +1,5 @@
 package com.mvp.ultimate.model.bean;
 
-/**
- * Created by codeest on 16/8/20.
- */
 
 public class GankItemBean {
 
