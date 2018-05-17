@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -16,6 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.mvp.ultimate.db.dao.auto'
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
@@ -54,6 +60,7 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.0.2'*/
 
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    implementation 'org.greenrobot:greendao:3.2.2'
 
 
 
