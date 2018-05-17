@@ -39,7 +39,7 @@ public class GirlPresenter extends RxPresenter<GirlContract.View> implements Gir
 
     @Override
     public void getGirlData() {
-/*        Call<GankHttpResponse<List<GankItemBean>>> call = mDataManager.fetchGirlList(NUM_OF_PAGE, currentPage);
+        Call<GankHttpResponse<List<GankItemBean>>> call = mDataManager.fetchGirlList(NUM_OF_PAGE, currentPage);
         call.enqueue(new Callback<GankHttpResponse<List<GankItemBean>>>() {
             @Override
             public void onResponse(Call<GankHttpResponse<List<GankItemBean>>> call, Response<GankHttpResponse<List<GankItemBean>>> response) {
@@ -52,7 +52,7 @@ public class GirlPresenter extends RxPresenter<GirlContract.View> implements Gir
             public void onFailure(Call<GankHttpResponse<List<GankItemBean>>> call, Throwable t) {
 
             }
-        });*/
+        });
     }
     public static final String IT_GOLD_TYPE = "gold_type";
     @Override

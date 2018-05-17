@@ -2,21 +2,15 @@ package com.mvp.ultimate;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.mvp.ultimate.base.AppClient;
 import com.mvp.ultimate.base.BaseActivity;
+import com.mvp.ultimate.base.ToolbarActivity;
 import com.mvp.ultimate.contract.GirlContract;
-import com.mvp.ultimate.http.HttpHelper;
-import com.mvp.ultimate.http.RetrofitHelper;
-import com.mvp.ultimate.http.api.GankApis;
-import com.mvp.ultimate.model.DataManager;
 import com.mvp.ultimate.model.bean.GankItemBean;
 import com.mvp.ultimate.model.bean.GoldListBean;
 import com.mvp.ultimate.presenter.GirlPresenter;
@@ -27,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import retrofit2.Retrofit;
 
 public class GirlsActivity extends BaseActivity<GirlPresenter> implements GirlContract.View {
 
@@ -53,7 +46,6 @@ public class GirlsActivity extends BaseActivity<GirlPresenter> implements GirlCo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
-        //多BaseURL的情况还要解决下
         mPresenter.getGirlData();
         mPresenter.getGoldData();
     }

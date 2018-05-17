@@ -109,13 +109,8 @@ public class RetrofitFactory {
 
     //设置日志
     public HttpLoggingInterceptor initLogInterceptor() {
-        HttpLoggingInterceptor loggingInterceptor = null;
-        if (BuildConfig.DEBUG) {
-            // Log信息拦截器
-            loggingInterceptor = new HttpLoggingInterceptor();
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            //设置 Debug Log 模式
-        }
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return loggingInterceptor;
 
     }

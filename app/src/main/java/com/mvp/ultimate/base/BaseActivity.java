@@ -19,13 +19,14 @@ import com.mvp.ultimate.model.DataManager;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
 /**
  * Created by ZX on 2018/5/8.
  */
 
-public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements BaseView {
+public abstract class BaseActivity<T extends BasePresenter> extends ToolbarActivity implements BaseView {
 
     protected T mPresenter;
 
@@ -37,18 +38,20 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     protected HttpHelper mRetrofitHelper;
 
     protected abstract int getLayout();
-    //不指定接口列表的时候，默认是BaseApis
-
 
     protected abstract T getPresenter();
-    protected String getBaseURL(){
-        return GankApis.HOST;
-    }
 
 
-    protected void initInject(){
-        Retrofit goldRetrofit = AppClient.retrofit(mContext, GoldApis.HOST);
-        Retrofit gankRetrofit = AppClient.retrofit(mContext, GankApis.HOST);
+    protected void initInject() {
+        AppClient appClient = new AppClient(mContext);
+
+        Retrofit.Builder builder = appClient.provideRetrofitBuilder();
+        OkHttpClient.Builder client = appClient.provideOkHttpBuilder();
+        OkHttpClient okHttpClient = appClient.provideClient(client);
+
+        Retrofit gankRetrofit = appClient.provideGankRetrofit(builder, okHttpClient);
+        Retrofit goldRetrofit = appClient.provideGoldRetrofit(builder, okHttpClient);
+
         GoldApis goldApis = goldRetrofit.create(GoldApis.class);
         GankApis gankApis = gankRetrofit.create(GankApis.class);
         mRetrofitHelper = new RetrofitHelper(gankApis, goldApis);
