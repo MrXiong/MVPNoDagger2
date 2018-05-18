@@ -6,6 +6,8 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.mvp.ultimate.base.BaseCallback;
+import com.mvp.ultimate.base.IApplication;
 import com.mvp.ultimate.base.RxPresenter;
 import com.mvp.ultimate.contract.GirlContract;
 import com.mvp.ultimate.http.response.GankHttpResponse;
@@ -37,11 +39,15 @@ public class GirlPresenter extends RxPresenter<GirlContract.View> implements Gir
     @Override
     public void getGirlData() {
         Call<GankHttpResponse<List<GankItemBean>>> call = mDataManager.fetchGirlList(NUM_OF_PAGE, currentPage);
-        call.enqueue(new Callback<GankHttpResponse<List<GankItemBean>>>() {
+        call.enqueue(new BaseCallback<GankHttpResponse<List<GankItemBean>>>() {
             @Override
-            public void onResponse(Call<GankHttpResponse<List<GankItemBean>>> call, Response<GankHttpResponse<List<GankItemBean>>> response) {
+            public void onLogicSuccess(Call<GankHttpResponse<List<GankItemBean>>> call, Response<GankHttpResponse<List<GankItemBean>>> response) {
                 GankHttpResponse<List<GankItemBean>> gankHttpResponse = response.body();
                 mView.showContent(gankHttpResponse.getResults());
+            }
+
+            @Override
+            public void onLogicFailure(Call<GankHttpResponse<List<GankItemBean>>> call, Response<GankHttpResponse<List<GankItemBean>>> response) {
 
             }
 
